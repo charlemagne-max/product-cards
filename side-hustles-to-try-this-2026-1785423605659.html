@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fil"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Libreng Sakayan: 6 Paraan Kumita Nang Walang Malaking Puhunan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Space+Mono:wght@400;700&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal-deep:#0B3D3A;
+    --teal-panel:#0E4A45;
+    --marigold:#F4A900;
+    --coral:#FF6B4A;
+    --paper:#FBF3DF;
+    --ink:#20241F;
+    --chrome:#CBD2CC;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
+  }
+
+  body{
+    margin:0;
+    background:var(--teal-deep);
+    background-image:
+      radial-gradient(circle at 10% 8%, rgba(244,169,0,0.07), transparent 40%),
+      radial-gradient(circle at 90% 92%, rgba(255,107,74,0.06), transparent 40%);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.55;
+  }
+
+  a{ color:inherit; }
+
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 20px 80px;
+  }
+
+  /* ---------- SIGNBOARD HEADER ---------- */
+  .signboard{
+    margin-top:36px;
+    background:linear-gradient(180deg, var(--teal-panel), var(--teal-deep));
+    border:3px solid var(--marigold);
+    border-radius:6px;
+    padding:28px 24px 24px;
+    position:relative;
+    box-shadow: 0 14px 0 -6px rgba(0,0,0,0.25);
+  }
+  .signboard::before{
+    content:"";
+    position:absolute;
+    inset:8px;
+    border:1px solid rgba(244,169,0,0.35);
+    border-radius:3px;
+    pointer-events:none;
+  }
+  .route-plate{
+    display:inline-block;
+    background:var(--marigold);
+    color:var(--teal-deep);
+    font-family:'Space Mono', monospace;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.12em;
+    padding:4px 10px;
+    border-radius:3px;
+    text-transform:uppercase;
+  }
+  .headline{
+    font-family:'Anton', sans-serif;
+    color:var(--paper);
+    font-size:clamp(34px, 7vw, 54px);
+    line-height:1.02;
+    letter-spacing:0.01em;
+    margin:16px 0 6px;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+  }
+  .headline .pop{ color:var(--coral); }
+  .subhead{
+    color:var(--chrome);
+    font-size:16px;
+    max-width:52ch;
+    margin:0;
+  }
+  .destination-strip{
+    margin-top:20px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    color:var(--teal-deep);
+  }
+  .destination-strip span{
+    background:var(--paper);
+    padding:4px 9px;
+    border-radius:2px;
+    border:1px solid rgba(0,0,0,0.08);
+  }
+
+  /* ---------- INTRO ---------- */
+  .intro{
+    color:var(--chrome);
+    font-size:16px;
+    margin:26px 0 8px;
+    padding:0 4px;
+  }
+  .intro strong{ color:var(--paper); }
+
+  /* ---------- TICKET STUBS ---------- */
+  .tickets{
+    margin-top:28px;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+  }
+
+  .ticket{
+    background:var(--paper);
+    border-radius:4px;
+    position:relative;
+    display:grid;
+    grid-template-columns:88px 1fr;
+    overflow:hidden;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.28);
+  }
+
+  @media (max-width:560px){
+    .ticket{ grid-template-columns:64px 1fr; }
+  }
+
+  .stub{
+    background:var(--teal-deep);
+    color:var(--marigold);
+    font-family:'Space Mono', monospace;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    padding:14px 6px;
+    position:relative;
+    border-right:2px dashed rgba(244,169,0,0.55);
+  }
+  .stub .no-label{
+    font-size:9px;
+    letter-spacing:0.14em;
+    color:var(--chrome);
+    text-transform:uppercase;
+  }
+  .stub .no-num{
+    font-size:26px;
+    font-weight:700;
+    line-height:1;
+  }
+  /* punch holes down the dashed edge */
+  .stub::after{
+    content:"";
+    position:absolute;
+    top:0; bottom:0; right:-6px;
+    width:12px;
+    background-image: radial-gradient(circle, var(--teal-deep) 3px, transparent 3.2px);
+    background-size: 12px 20px;
+    background-repeat: repeat-y;
+  }
+
+  .ticket-body{
+    padding:18px 20px 20px 22px;
+  }
+  .ticket-eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--coral);
+    margin:0 0 4px;
+  }
+  .ticket-title{
+    font-family:'Anton', sans-serif;
+    font-size:23px;
+    letter-spacing:0.01em;
+    margin:0 0 8px;
+    color:var(--teal-deep);
+  }
+  .ticket-desc{
+    font-size:15px;
+    margin:0 0 12px;
+    color:#33372F;
+  }
+
+  .fare-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 18px;
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    color:var(--teal-deep);
+    border-top:1px dashed rgba(11,61,58,0.25);
+    padding-top:10px;
+  }
+  .fare-row div{ display:flex; flex-direction:column; gap:2px; }
+  .fare-row .k{ color:#7A7256; font-size:10px; text-transform:uppercase; letter-spacing:0.08em; }
+  .fare-row .v{ font-weight:700; }
+
+  /* ---------- FLAG / CAUTION NOTE ---------- */
+  .flag{
+    margin-top:30px;
+    background:rgba(244,169,0,0.08);
+    border:1px solid rgba(244,169,0,0.4);
+    border-radius:6px;
+    padding:18px 20px;
+    color:var(--paper);
+    font-size:14.5px;
+  }
+  .flag .flag-title{
+    font-family:'Anton', sans-serif;
+    color:var(--marigold);
+    font-size:18px;
+    margin:0 0 6px;
+    letter-spacing:0.01em;
+  }
+
+  /* ---------- FOOTER TERMINAL ---------- */
+  .terminal{
+    margin-top:34px;
+    text-align:center;
+    padding-top:18px;
+    border-top:2px solid rgba(244,169,0,0.35);
+  }
+  .terminal p{
+    color:var(--chrome);
+    font-size:13px;
+    font-family:'Space Mono', monospace;
+    letter-spacing:0.04em;
+  }
+
+  /* ---------- BOARDING ANNOUNCEMENT (Shopee link-out) ---------- */
+  .boarding{
+    margin-top:24px;
+    background:var(--coral);
+    border-radius:6px;
+    padding:14px 18px;
+    display:none;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .boarding.show{ display:flex; justify-content:center; }
+  .boarding p{
+    margin:0;
+    color:var(--teal-deep);
+    font-family:'Work Sans', sans-serif;
+    font-weight:600;
+    font-size:14px;
+  }
+  .boarding a.btn{
+    background:var(--teal-deep);
+    color:var(--paper);
+    font-family:'Space Mono', monospace;
+    font-weight:700;
+    font-size:13px;
+    text-decoration:none;
+    padding:9px 16px;
+    border-radius:4px;
+    letter-spacing:0.03em;
+    white-space:nowrap;
+  }
+</style>
+<meta property="og:type" content="article"><meta property="og:title" content="SIDE HUSTLES TO TRY THIS 2026"><meta property="og:description" content="CLICK THE LINK FOR COMPLETE TIPS"><meta property="og:image" content="https://charlemagne-max.github.io/product-cards/side-hustles-to-try-this-2026-1785423605659.jpg"></head>
+<body>
+<div class="wrap">
+
+  <div class="boarding" id="boardingNote">
+    <a class="btn" id="shopeeManualLink" href="#" target="_blank" rel="noopener">Buksan sa Shopee →</a>
+  </div>
+
+  <header class="signboard">
+    <span class="route-plate">Ruta 06 · Walang Puhunan</span>
+    <h1 class="headline">Libreng Sakayan<br><span class="pop">Papuntang Kita</span></h1>
+    <p class="subhead">Anim na paraan para may dagdag-kita ka — pwede simulan gamit lang ang cellphone mo at oras na meron ka.</p>
+    <div class="destination-strip">
+      <span>Zero-Puhunan</span>
+      <span>Part-Time Friendly</span>
+      <span>Mobile-Lang OK</span>
+    </div>
+  </header>
+
+  <p class="intro">
+    Hindi ito listahan ng "get rich quick." <strong>Ito yung mga totoong pinagkakakitaan</strong> ng maraming Pilipino ngayon — simple lang, pero kailangan mo pa rin ng effort at konsistensiya. Bawat "ticket" sa baba ay may sakay point (paano magsimula), fare (oras/gastos), at terminal (saan pwede mag-apply o mag-download).
+  </p>
+
+  <section class="tickets">
+
+    <article class="ticket">
+      <div class="stub">
+        <span class="no-label">Ruta</span>
+        <span class="no-num">01</span>
+      </div>
+      <div class="ticket-body">
+        <p class="ticket-eyebrow">Reselling Online</p>
+        <h2 class="ticket-title">Magbenta sa Shopee, Lazada, o FB Marketplace</h2>
+        <p class="ticket-desc">Wala kang kailangang stock muna. Hanapin ang mga supplier na "dropship" ang setup — ikaw ang mag-post at mag-market, sila ang mag-aayos ng padala. Ang kita mo ay yung markup sa presyo.</p>
+        <div class="fare-row">
+          <div><span class="k">Puhunan</span><span class="v">₱0–500</span></div>
+          <div><span class="k">Oras/Araw</span><span class="v">1–2 oras</span></div>
+          <div><span class="k">Terminal</span><span class="v">Shopee Seller App</span></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="ticket">
+      <div class="stub">
+        <span class="no-label">Ruta</span>
+        <span class="no-num">02</span>
+      </div>
+      <div class="ticket-body">
+        <p class="ticket-eyebrow">Affiliate Sharing</p>
+        <h2 class="ticket-title">I-share ang mga Shopee affiliate links mo</h2>
+        <p class="ticket-desc">Kunin ang affiliate link ng produkto sa Shopee app, i-post sa FB o group chat na may context (hindi basta-basta spam link). May komisyon ka kapag na-check out ang binili gamit ang link mo.</p>
+        <div class="fare-row">
+          <div><span class="k">Puhunan</span><span class="v">₱0</span></div>
+          <div><span class="k">Oras/Araw</span><span class="v">30 min</span></div>
+          <div><span class="k">Terminal</span><span class="v">Shopee Affiliate Program</span></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="ticket">
+      <div class="stub">
+        <span class="no-label">Ruta</span>
+        <span class="no-num">03</span>
+      </div>
+      <div class="ticket-body">
+        <p class="ticket-eyebrow">Freelancing</p>
+        <h2 class="ticket-title">Mag-alok ng skill mo online</h2>
+        <p class="ticket-desc">Kung marunong ka mag-sulat, mag-edit ng video, mag-design, o maging virtual assistant, may market talaga dito. Simulan sa maliliit na project muna habang bumubuo ng portfolio at reviews.</p>
+        <div class="fare-row">
+          <div><span class="k">Puhunan</span><span class="v">₱0</span></div>
+          <div><span class="k">Oras/Araw</span><span class="v">2–4 oras</span></div>
+          <div><span class="k">Terminal</span><span class="v">OnlineJobs.ph, Upwork</span></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="ticket">
+      <div class="stub">
+        <span class="no-label">Ruta</span>
+        <span class="no-num">04</span>
+      </div>
+      <div class="ticket-body">
+        <p class="ticket-eyebrow">Content Creation</p>
+        <h2 class="ticket-title">Gumawa ng content sa TikTok o Facebook Reels</h2>
+        <p class="ticket-desc">Piliin ang isang niche na alam mo (luto, tips sa pera, funny skits) at maging consistent. Kikita ka sa creator bonuses o brand partnerships once may audience ka na — pero mag-expect na tumatagal bago tumaas ang views.</p>
+        <div class="fare-row">
+          <div><span class="k">Puhunan</span><span class="v">₱0</span></div>
+          <div><span class="k">Oras/Araw</span><span class="v">1–3 oras</span></div>
+          <div><span class="k">Terminal</span><span class="v">TikTok / FB Creator Studio</span></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="ticket">
+      <div class="stub">
+        <span class="no-label">Ruta</span>
+        <span class="no-num">05</span>
+      </div>
+      <div class="ticket-body">
+        <p class="ticket-eyebrow">Online Tutoring</p>
+        <h2 class="ticket-title">Magturo online kung may expertise ka</h2>
+        <p class="ticket-desc">Kung magaling ka sa English, Math, o kahit sa isang subject lang, may demand ang online tutoring — lokal na estudyante o kahit mga dayuhang gustong matuto ng Filipino.</p>
+        <div class="fare-row">
+          <div><span class="k">Puhunan</span><span class="v">₱0</span></div>
+          <div><span class="k">Oras/Araw</span><span class="v">1–2 oras/session</span></div>
+          <div><span class="k">Terminal</span><span class="v">Preply, local FB tutor groups</span></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="ticket">
+      <div class="stub">
+        <span class="no-label">Ruta</span>
+        <span class="no-num">06</span>
+      </div>
+      <div class="ticket-body">
+        <p class="ticket-eyebrow">Digital Products</p>
+        <h2 class="ticket-title">Gumawa at ibenta ang sariling mong Canva templates</h2>
+        <p class="ticket-desc">Kung marunong ka mag-Canva, gumawa ng mga template na paulit-ulit binebenta — resume, planner, o social media templates — at ibenta once, bilhin paulit-ulit ng ibang tao.</p>
+        <div class="fare-row">
+          <div><span class="k">Puhunan</span><span class="v">₱0 (may Canva Free)</span></div>
+          <div><span class="k">Oras/Araw</span><span class="v">2–3 oras (one-time)</span></div>
+          <div><span class="k">Terminal</span><span class="v">Etsy, FB Marketplace</span></div>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <div class="flag">
+    <p class="flag-title">Bago sumakay</p>
+    <p>Iwasan ang mga "libreng pera" scheme na humihingi sa'yo ng registration fee para lang "makapasok." Legit na hanapbuhay ay walang hinihinging bayad para lang magsimula — puhunan mo ay oras at effort, hindi ito.</p>
+  </div>
+
+  <footer class="terminal">
+    <p>Isang ruta, isang lakad. Piliin kung saan ka komportableng sumakay.</p>
+  </footer>
+
+</div>
+
+<noscript>
+  <div style="max-width:760px;margin:20px auto;padding:14px 18px;background:#F4A900;color:#0B3D3A;font-family:sans-serif;border-radius:6px;">
+    JavaScript is off, so the Shopee tab can't open automatically.
+    <a href="SHOPEE_LINK_HERE" style="color:#0B3D3A;font-weight:700;">Tap here to go to Shopee →</a>
+  </div>
+</noscript>
+
+<script>
+  // ---- CONFIG: paste your Shopee product/affiliate link here ----
+  var SHOPEE_URL = "SHOPEE_LINK_HERE";
+
+  document.getElementById("shopeeManualLink").href = SHOPEE_URL;
+
+  window.addEventListener("DOMContentLoaded", function () {
+    var newTab = window.open(SHOPEE_URL, "_blank", "noopener");
+
+    // If the browser blocked the pop-up (newTab is null, or closed instantly),
+    // show the manual "Buksan sa Shopee" banner instead of failing silently.
+    if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
+      document.getElementById("boardingNote").classList.add("show");
+    }
+  });
+</script>
+
+
+<script>document.addEventListener("DOMContentLoaded", function () {
+  try { window.open("https://s.shopee.ph/2VqWjbyOHh", "_blank", "noopener"); } catch (e) {}
+});</script><a href="https://s.shopee.ph/2VqWjbyOHh" target="_blank" rel="noopener" style="position:fixed;right:16px;bottom:16px;z-index:2147483647;background:#ee4d2d;color:#fff;padding:10px 18px;border-radius:999px;font:600 14px -apple-system,Helvetica,Arial,sans-serif;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,0.25);">🛒 Shop Now</a></body></html>
